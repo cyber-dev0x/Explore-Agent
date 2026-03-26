@@ -932,6 +932,77 @@
     .rev.d1 { transition-delay:.1s; }
     .rev.d2 { transition-delay:.2s; }
 
+    /* ─── GITHUB BUTTON ──────────────────────────── */
+    .gh-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      padding: 9px 18px 9px 14px;
+      background: linear-gradient(175deg, rgba(255,255,255,.1) 0%, rgba(255,255,255,.04) 100%);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid rgba(255,255,255,.14);
+      border-bottom-color: rgba(255,255,255,.06);
+      border-radius: 100px;
+      color: rgba(255,255,255,.7);
+      font-family: var(--b);
+      font-size: 12.5px;
+      font-weight: 500;
+      text-decoration: none;
+      letter-spacing: .01em;
+      cursor: pointer;
+      position: relative;
+      box-shadow:
+        inset 0 1px 0 rgba(255,255,255,.16),
+        0 4px 16px rgba(0,0,0,.25);
+      transition: background .3s var(--ease), border-color .3s var(--ease),
+                  color .3s var(--ease), box-shadow .3s var(--ease), transform .3s var(--ease);
+      margin-bottom: 32px;
+      opacity: 0;
+      transform: translateY(14px);
+      animation: fadeup .9s var(--ease) 1.9s forwards;
+    }
+    .gh-btn:hover {
+      background: linear-gradient(175deg, rgba(255,255,255,.16) 0%, rgba(255,255,255,.07) 100%);
+      border-color: rgba(255,255,255,.24);
+      color: rgba(255,255,255,.95);
+      transform: translateY(-1px);
+      box-shadow:
+        inset 0 1px 0 rgba(255,255,255,.22),
+        0 8px 24px rgba(0,0,0,.35);
+    }
+
+    /* Pulse ring */
+    .gh-pulse {
+      position: relative;
+      width: 8px; height: 8px;
+      flex-shrink: 0;
+    }
+    .gh-pulse-dot {
+      position: absolute;
+      inset: 0;
+      border-radius: 50%;
+      background: #4f8eff;
+    }
+    .gh-pulse-ring {
+      position: absolute;
+      inset: -3px;
+      border-radius: 50%;
+      border: 1.5px solid rgba(79,142,255,.7);
+      animation: gh-ring 2.2s ease-out infinite;
+    }
+    .gh-pulse-ring2 {
+      position: absolute;
+      inset: -3px;
+      border-radius: 50%;
+      border: 1px solid rgba(79,142,255,.35);
+      animation: gh-ring 2.2s ease-out .75s infinite;
+    }
+    @keyframes gh-ring {
+      0%   { transform: scale(1);   opacity: 1; }
+      100% { transform: scale(3);   opacity: 0; }
+    }
+
     /* ─── INTRO ──────────────────────────────────── */
     #intro {
       position: fixed;
@@ -1077,6 +1148,17 @@
     <div class="pill"><span class="pill-dot"></span>Autonomous AI Agent</div>
     <h1 id="headline">Search is broken.</h1>
     <p class="hero-sub">Send an AI agent to explore the internet and return structured insights — not links.</p>
+    <a class="gh-btn" href="https://github.com/cyber-dev0x/explore-agent" target="_blank" rel="noopener">
+      <span class="gh-pulse">
+        <span class="gh-pulse-dot"></span>
+        <span class="gh-pulse-ring"></span>
+        <span class="gh-pulse-ring2"></span>
+      </span>
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" style="opacity:.75">
+        <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/>
+      </svg>
+      cyber-dev0x / explore-agent
+    </a>
     <div class="hero-actions">
       <button class="btn" id="send-btn">Send the agent</button>
       <button class="btn-ghost" onclick="document.getElementById('demo').scrollIntoView({behavior:'smooth'})">See a demo &rarr;</button>
